@@ -12,6 +12,7 @@ install.packages("igraph")
 install.packages("ggraph")
 install.packages("dplyr")
 install.packages("tm")
+install.packages("writexl")
 
 ##load packages
 
@@ -24,6 +25,8 @@ library("dplyr")
 library("tm")
 library(ggplot2)
 library(tidyverse)
+library(writexl)
+
 
 
 ##read data----
@@ -107,12 +110,19 @@ DTM5 <- DocumentTermMatrix(corpus5)
 DTM6 <- DocumentTermMatrix(corpus6)
 DTM7 <- DocumentTermMatrix(corpus7)
 
+
+
 ##Data frame for DTM
 sums1 <- as.data.frame(colSums(as.matrix(DTM1)))
 sums1<-rownames_to_column(sums1)
 colnames(sums1) <- c("term", "count")
 sums1 <- arrange(sums1, desc(count))
-sums1 <- subset(sums1, count >=10)
+#sums1 <- subset(sums1, count >=10)
+write_xlsx(sums1,"iCloud Drive\\Desktop\\dsprojects\\healthyfood.xlsx")
+
+
+
+class(sums1)
 
 sums2 <- as.data.frame(colSums(as.matrix(DTM2)))
 sums2<-rownames_to_column(sums2)
