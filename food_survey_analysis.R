@@ -51,7 +51,7 @@ corpus7<-SimpleCorpus(VectorSource(consumption_covid))
 
 # 1. Stripping any extra white space:
 corpus1 <- tm_map(corpus1, stripWhitespace)
-corpus3 <- tm_map(corpus2, stripWhitespace)
+corpus2 <- tm_map(corpus2, stripWhitespace)
 corpus3 <- tm_map(corpus3, stripWhitespace)
 corpus4 <- tm_map(corpus4, stripWhitespace)
 corpus5 <- tm_map(corpus5, stripWhitespace)
@@ -127,7 +127,7 @@ sums3 <- arrange(sums3, desc(count))
 sums3 <- subset(sums3, count >=10)
 
 sums3 <- as.data.frame(colSums(as.matrix(DTM3)))
-sums3<-rownames_to_column(sums3)
+sums3 <-rownames_to_column(sums3)
 colnames(sums3) <- c("term", "count")
 sums3 <- arrange(sums3, desc(count))
 sums3 <- subset(sums3, count >=10)
